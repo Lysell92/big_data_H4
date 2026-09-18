@@ -289,4 +289,12 @@ Afslut med en lille tabel:
 Brug statusord som **implementeret og testet**, **implementeret men ikke testet** eller **foreslået**. Notér de Python-, DuckDB- og arkitekturkilder, du faktisk anvendte, med genfindelig reference og hvad de bidrog med.
 
 https://duckdb.org/docs/current/clients/python/reference/
-En oversigt over python 
+En oversigt over python metoder i duckDB. Her fandt jeg blandt andet fetchmany(), som jeg brugte til at
+printe de select-statements jeg returnerer. 
+Og jeg brugte også extract_statements() til at parse SQL-filen, så statements ikke behøver at blive adskilt manuelt med split(";"). Parseren kan dermed skelne mellem semikoloner som afslutter SQL-statements, og semikoloner, der indgår normalt i en tekststreng.
+
+https://duckdb.org/docs/current/internals/overview
+Her fandt jeg StatementType, som hjalp mig med at fastligge hvad for en type et Select-statements betegnes som, så jeg kunne genkende og udskrive dem i min pipeline.
+
+
+

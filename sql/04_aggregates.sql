@@ -59,8 +59,8 @@
 -- Jeg blev nød til at tilføje et maximum check i forlængelse af min null og < 0 checks. Målingerne viste en total_distance på over 50000 mil i den ene weekend modsætning til den anden weekend som lå omkring 1200 mil.
 
 -- Hvilket er et fint eksempel på hvordan gennemsnit kan generes af støj i dataen og dermed ikke er repræsentativ for et reelt gennemsnit.
--- Gruppe gennemsnit kan også være fejlagtig, fordi grupperne kan variere i stor grad (som eksempel kan man forestille sig en taxa-chauffør, som kører langdistanceturer vs. en der kører mindre ture i den indre by. 
--- Dermed er deres gennemsnit være vidt forskelligt og hvis du sammenfattede deres gennemsnit, vil forskellen mellem de to ikke være gennemsigtig. 
+-- Gruppe gennemsnit kan også være fejlagtig, fordi grupperne kan variere i stor grad (som eksempel kan man forestille sig en taxa-chauffør, som kører langdistanceturer vs. en der kører mindre ture i den indre by). 
+-- Dermed kan deres gennemsnit være vidt forskelligt og hvis du sammenfattede gennemsnittet, vil forskellen ikke være gennemsigtig. 
 
 
 CREATE OR REPLACE TABLE weekend_comparison AS
@@ -126,7 +126,9 @@ WHERE z.Zone IS NOT NULL
 
 GROUP BY
     weekend,
-    z.Zone;
+    z.Zone
+
+ORDER BY weekend asc;
 
 -- Analysebehov 2. En generel oversigt over taxaturer i en borough: Tidspunkt for afhentning, aflevering, turens distance og passagerer.
 -- Grain er her en taxa-tur, men mere fokuseret med færre measures end vores fact_trip.
@@ -149,6 +151,8 @@ JOIN dim_zone as z
 WHERE f.tpep_pickup_datetime IS NOT NULL
 AND f.tpep_dropoff_datetime IS NOT NULL
 AND f.trip_distance IS NOT NULL
-AND f.passenger_count IS NOT NULL;
+AND f.passenger_count IS NOT NULL
+
+ORDER BY f.tpep_pickup_datetime ASC;
 
 
