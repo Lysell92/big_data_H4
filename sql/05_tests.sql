@@ -1,12 +1,12 @@
 -- TESTS
 
--- Viser om det ønskede grain i weekend_comparison henholder sig til: en række pr. kombination af weekend +
--- pickup-zone. Hvis dette query returnerer en række, betyder det, at den samme weekend + pickup_zone kombination 
--- forekommer flere gange og at grainet derfor ikke overholdes. 
-
 SELECT * FROM weekend_comparison;
 
 SELECT * FROM taxi_data;
+
+-- Viser om det ønskede grain i weekend_comparison henholder sig til: en række pr. kombination af weekend +
+-- pickup-zone. Hvis dette query returnerer en række, betyder det, at den samme weekend + pickup_zone kombination 
+-- forekommer flere gange og at grainet derfor ikke overholdes. 
 
 
 SELECT

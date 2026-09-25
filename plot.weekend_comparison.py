@@ -35,9 +35,19 @@ def main():
     plt.tight_layout()
     plt.show()
 
+    # Chart 2 - number of trips per weekend as a pie-chart
+    plt.figure(figsize=(9, 5))
+    plt.pie(df["number_of_trips"], labels=df["weekend"])
+    plt.xlabel("Weekend")
+    plt.ylabel("Number of trips")
+    plt.title("Number of taxi trips per weekend – Boerum Hill")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
     # Chart 2: total distance per weekend
     plt.figure(figsize=(9, 5))
-    plt.bar(df["weekend"], df["total_distance"])
+    plt.bar(df["weekend"],df["total_distance"])
     plt.xlabel("Weekend")
     plt.ylabel("Total distance")
     plt.title("Total taxi distance per weekend – Boerum Hill")
